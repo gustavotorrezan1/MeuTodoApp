@@ -1,11 +1,25 @@
-﻿namespace MeuTodoApp.Models;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace MeuTodoApp.Models;
 
 public class Todo
 {
     public int Id { get; set; }
-    public string Titulo { get; set; }
-    public bool Feito { get; set; }
-    public DateTime Criacao { get; set; } = DateTime.Now;
-    public DateTime UltimaModificacao { get; set; } = DateTime.Now;
-    public string Usuario { get; set; }
+
+    [DisplayName("Título")]
+    [Required(ErrorMessage = "Campo obrigatório")]
+    public string Title { get; set; }
+
+    [DisplayName("Concluído")]
+    public bool Done { get; set; }
+
+    [DisplayName("Criado em")]
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+    [DisplayName("Última atualização")]
+    public DateTime LastUpdateData { get; set; } = DateTime.Now;
+
+    [DisplayName("Usuário")]
+    public string User { get; set; }
 }

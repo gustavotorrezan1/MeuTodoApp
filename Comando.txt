@@ -1,0 +1,2 @@
+﻿//Gerador automatizado
+dotnet aspnet-codegenerator controller -name TodoController -dc ApplicationDbContext -m Todo --useDefaultLayout --useSqlite --referenceScriptLibraries
