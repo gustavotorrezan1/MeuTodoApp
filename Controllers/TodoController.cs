@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MeuTodoApp.Data;
 using MeuTodoApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MeuTodoApp.Controllers;
 
+[Authorize]
 public class TodoController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -55,6 +57,7 @@ public class TodoController : Controller
     {
         if (ModelState.IsValid)
         {
+            todo.User = User.Identity.Name;
             _context.Add(todo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
